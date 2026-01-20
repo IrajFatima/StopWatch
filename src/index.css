@@ -1,51 +1,58 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
+html,
+body {
+  height: 100%;
+}
 
 body {
-  min-height: 100vh;
+  margin: 0;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(180deg, #0f0f10, #1a1a1c);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'JetBrains Mono', monospace;
   color: #f5f5f7;
   text-align: center;
-  font-size: 2rem;
-
+  font-size: clamp(1rem, 2.5vw, 2rem);
 }
 
 .stopwatch {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 32px; */
-  padding: 40px 52px;
-  border-radius: 28px;
+  gap: 24px;
+  padding: 28px;
+  border-radius: 24px;
   background: linear-gradient(180deg, #1c1c1e, #111113);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  width: 100%;
+  max-width: 500px;
 }
 
 .display {
-  font-size: 4.8rem;
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
   font-weight: 500;
-  color: #f5f5f7;
+  width: 13ch;
+  max-width: 100%;
   text-align: center;
-
-  width: 12ch;
-  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .controls {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
 }
 
 .controls button {
+  flex: 1;
   min-width: 120px;
   padding: 14px 20px;
   font-size: 1rem;
@@ -58,10 +65,7 @@ body {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     0 8px 18px rgba(0, 0, 0, 0.6);
-  transition:
-    transform 0.12s ease,
-    background-color 0.12s ease,
-    box-shadow 0.12s ease;
+  transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
 }
 
 .controls button:hover {
@@ -71,18 +75,23 @@ body {
 
 .controls button:active {
   transform: translateY(0);
-  box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-.start-button {
-  color: #30d158;
-}
 
-.stop-button {
-  color: #ff453a;
-}
 
-.reset-button {
-  color: #0a84ff;
+@media (max-width: 480px) {
+  .controls {
+    flex-direction: column;
+  }
+
+
+  .stopwatch {
+    width: auto;
+    margin: 0px;
+  }
+
+  .controls button {
+    width: 100%;
+  }
 }
